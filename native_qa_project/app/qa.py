@@ -1,10 +1,23 @@
+# Import LangChain tools to:
+# 1️⃣ Combine documents as context,
+# 2️⃣ Create prompts,
+# 3️⃣ Run LLM chains with a defined template.
 from langchain.chains.combine_documents.stuff import StuffDocumentsChain
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import Ollama
 from langchain.chains.llm import LLMChain
 
-llm = Ollama(model="phi3:mini", temperature=0.2, num_predict=200) # 1 token ≈ 0.75 words in English, so 200 tokens ≈ 150 words
+# Initialize the Ollama LLM.
+# Uses the local or hosted Ollama server with the specified lightweight model.
+# 'temperature' controls randomness; lower is more factual.
+# 'num_predict' sets the max token output (~1 token ≈ 0.75 English word).
+llm = Ollama(model="phi3:mini", temperature=0.2, num_predict=200)
 
+# Define the system prompt template:
+# - Tells the LLM to ONLY answer using context.
+# - Handles greetings.
+# - Returns a fallback answer if the info is not found.
+# - Contains clear examples to guide LLM behavior.
 template = """
 You are a helpful AI assistant answering questions based strictly on the provided context.
 
@@ -43,10 +56,32 @@ Question: {question}
 Answer:
 """
 
-prompt = PromptTemplate(input_variables=["context", "question"], template=template)
+# Wrap the template in a LangChain PromptTemplate.
+# It dynamically injects context and question at runtime.
+prompt = PromptTemplate(
+    input_variables=["context", "question"],
+    template=template
+)
 
+# Create an LLM chain that uses the Ollama LLM + custom prompt.
 llm_chain = LLMChain(llm=llm, prompt=prompt)
-chain = StuffDocumentsChain(llm_chain=llm_chain, document_variable_name="context")
+
+# Wrap it in a StuffDocumentsChain:
+# This feeds multiple retrieved document chunks into the prompt.
+chain = StuffDocumentsChain(
+    llm_chain=llm_chain,
+    document_variable_name="context"
+)
 
 def answer_question(question, context):
-    return chain.run({"input_documents": context, "question": question})
+    """
+    Generates an answer given:
+    - 'question': the user input.
+    - 'context': list of top document chunks from vector search.
+
+    Runs the LLM chain and returns the model's final answer.
+    """
+    return chain.run({
+        "input_documents": context,
+        "question": question
+    })
