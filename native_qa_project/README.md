@@ -17,26 +17,6 @@ This prototype allows you to **ask questions in natural English** about the cont
 
 ---
 
-## 📂 Folder Structure
-
-.
-├── app/
-│ ├── streamlit_app.py
-│ ├── loader.py
-│ ├── embedder.py
-│ ├── qa.py
-│ ├── interface.py
-│ ├── test_pipline.py # Optional: run in terminal
-├── data/
-│ ├── charbel/
-│ ├── phoenix alliance/
-│ ├── empty folder/
-│ ├── wrong format/
-├── requirements.txt
-├── README.md
-
----
-
 ## 🛠️ How to Run
 
 1️⃣ **Create a virtual environment**
