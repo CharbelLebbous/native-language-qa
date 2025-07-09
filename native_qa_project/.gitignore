@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+env/
+.venv/
+
+# FAISS index, embeddings, or pickle files
+*.faiss
+*.pkl
+
+# System files
+.DS_Store
+
+# VSCode or PyCharm
+.vscode/
+.idea/
+

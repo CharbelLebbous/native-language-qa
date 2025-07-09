@@ -1,0 +1,13 @@
+First Name: Charbel 
+Family name: Lebbous
+status: single
+Nationality: Lebanese
+Languages spoken: Fluent in English, fluent in French level DELF B2, native arabic, beginner chinese
+
+Charbel is a highly curious and self-driven individual passionate about artificial intelligence, robotics, and deep learning. Despite limited local opportunities, he continuously seeks ways to grow through hands-on projects, online learning, and real-world challenges.
+
+He is currently focused on enhancing his skills in AI systems, including computer vision, reinforcement learning, and natural language processing. In his free time, Charbel enjoys solving puzzles, playing strategy board games, and learning languages. His long-term goal is to build impactful, human-centered AI applications.
+
+Charbel believes that education should be accessible and engaging, and he is exploring ways to use technology to support cognitive development in children through creative platforms.
+
+hobbies: basketball, badminton, pingpon, magic, bartending, camping

@@ -1,0 +1,8 @@
+streamlit
+langchain
+langchain-community
+pdfplumber
+python-docx
+huggingface-hub
+faiss-cpu
+ollama
